@@ -4,6 +4,7 @@ import * as types from "../constants/actionTypes";
 export const getNews = (pageNumber, keywords, pageSize) => async (dispatch) => {
   try {
     const { data } = await api.fetchNews(pageNumber, keywords, pageSize);
+    console.log(data);
     dispatch({ type: types.FETCH_NEWS, payload: data });
   } catch (error) {
     console.log(error.message);

@@ -1,11 +1,17 @@
 import * as types from "../constants/actionTypes";
 
-const news = (posts = [], action) => {
+const initialState = {
+  allData: [],
+};
+const news = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_NEWS:
-      return action.payload;
+      return {
+        ...state,
+        allData: action.payload,
+      };
     default:
-      return posts;
+      return news;
   }
 };
 

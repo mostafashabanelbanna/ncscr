@@ -9,5 +9,5 @@ const API = axios.create({
   },
 });
 
-export const fetchNews = (pageNumber, keywords = {}, pageSize = 9) =>
+export const fetchNews = (pageNumber, keywords, pageSize) =>
   API.post(`/NewsAPI/Search/${pageNumber}/${pageSize}`, keywords);

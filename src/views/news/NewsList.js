@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getNews } from "../../redux/actions/news";
 
-const NewsList = (pageNumber = 1, keywords, pageSize = 9) => {
+const NewsList = () => {
   const news = useSelector((state) => state.news);
   const dispatch = useDispatch();
 
