@@ -11,3 +11,8 @@ const API = axios.create({
 
 export const fetchNews = (pageNumber, keywords, pageSize) =>
   API.post(`/NewsAPI/Search/${pageNumber}/${pageSize}`, keywords);
+
+export const resultCount = (keywords) =>
+  API.post(`/NewsAPI/GetResultCount`, keywords);
+
+export const fetchNewsItem = (id) => API.get(`/NewsAPI/GetById?id=${id}`);

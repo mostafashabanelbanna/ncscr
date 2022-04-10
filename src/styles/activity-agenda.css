@@ -1,0 +1,189 @@
+/* .fc-theme-standard .fc-scrollgrid,
+.fc td, .fc th {
+    border: 3px solid white !important;
+}
+
+.fc-col-header-cell .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion{
+    color: #c2c2c2;
+}
+
+.fc-scrollgrid  thead tr td .fc-scroller-harness{
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.fc-scroller{ 
+    overflow: hidden;
+}
+
+.fc-scroller-liquid-absolute{
+    overflow: hidden;
+}
+.fc-daygrid-day-frame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fc-daygrid-day{
+    background-color: transparent;
+    font-size: x-large;
+}
+
+.fc-day-past .fc-daygrid-day-top, .fc-day-future .fc-daygrid-day-top{
+    background-color: #ddd;
+    width: 65px;
+    height: 65px;
+}
+
+.fc-day-today .fc-daygrid-day-top{
+    background-color: rgba(233, 203, 126, 0.5);
+    width: 65px;
+    height: 65px;
+}
+
+.fc-toolbar-title{
+    color: #d8b65e;
+}
+
+.fc-daygrid-day-number{
+    margin: auto;
+}
+
+.fc-event-title{
+    font-size: 1rem;
+}
+
+.fc-daygrid-more-link{
+    color: #aaa;
+}
+
+.fc .fc-daygrid-day-bottom {
+    font-size: 0.7em;
+}
+
+.fc .fc-daygrid-day.fc-day-today{
+    background-color: transparent !important;
+}
+
+.fc-scrollgrid-sync-table {
+    height: 500px !important;
+} */
+
+.fc .fc-daygrid-event-harness-abs,
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+  cursor: pointer;
+}
+
+.fc-event-time,
+.fc-daygrid-event-dot {
+  display: none;
+}
+
+.fc-daygrid-event-harness {
+  background-color: #f39e8e;
+}
+
+.fc-daygrid-dot-event .fc-event-title {
+  color: black;
+}
+
+/* .fc-theme-standard .fc-scrollgrid,
+.fc td, .fc th {
+    border: 3px solid white !important;
+} */
+
+.fc-col-header-cell .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion {
+  color: #c2c2c2;
+}
+
+/* 
+.fc-scrollgrid  thead tr td .fc-scroller-harness{
+    margin-bottom: 1.5rem;
+}
+
+.fc-daygrid-day-frame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fc-daygrid-day{
+    background-color: transparent;
+    font-size: x-large;
+}
+
+.fc-day-past .fc-daygrid-day-top, .fc-day-future .fc-daygrid-day-top{
+    background-color: #ddd;
+    width: 65px;
+    height: 65px;
+}
+
+
+
+.fc-toolbar-title{
+    color: #d8b65e;
+}
+
+.fc-daygrid-day-number{
+    margin: auto;
+}
+
+.fc-event-title{
+    font-size: 1rem;
+}
+
+.fc-daygrid-more-link{
+    color: #aaa;
+}
+
+.fc .fc-daygrid-day-bottom {
+    font-size: 0.7em;
+}
+
+.fc .fc-daygrid-day.fc-day-today{
+    background-color: transparent !important;
+}
+*/
+.fc-daygrid-day.fc-day.fc-day-sun.fc-day-past .fc .fc-daygrid-day.fc-day-today,
+.fc .fc-daygrid-day.fc-day-future {
+  height: 5rem !important;
+}
+
+.fc .fc-daygrid-day-number {
+  color: black;
+  text-decoration: none;
+}
+
+.fc-col-header-cell-cushion {
+  text-decoration: none;
+}
+
+.fc .fc-today-button {
+  display: none;
+}
+
+.fc .fc-button-primary {
+  background: linear-gradient(to top, #18241d, #bc4a2f) !important;
+}
+
+/* .fc .fc-button-primary:hover,
+.fc .fc-button-primary:active:before {
+  background-color: linear-gradient(to right, #18241d, #bc4a2f) !important;
+} */
+
+/* .fc-daygrid-day > .fc-scrollgrid-sync-inner .fc-daygrid-day-events .fc-daygrid-event-harness-abs{
+    background-color: red !important;
+} */
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child),
+.fc-direction-ltr .fc-button-group > .fc-button:not(:first-child) {
+  border-radius: 0.25em;
+}
+.fc .fc-button-primary {
+  border-color: transparent !important;
+}
+
+.fc-direction-ltr .fc-button-group > .fc-button:not(:last-child) {
+  margin-right: 1.5rem;
+}

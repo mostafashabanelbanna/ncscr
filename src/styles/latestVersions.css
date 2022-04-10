@@ -1,0 +1,13 @@
+.containershadow {
+  box-shadow: 0px 0px 5px black;
+}
+
+.cardbg {
+  background: rgb(13 14 14);
+  background: linear-gradient(
+    0deg,
+    rgb(36 62 48) 0%,
+    rgb(26 42 33) 0%,
+    rgb(13 14 14) 100%
+  );
+}

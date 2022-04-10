@@ -1,0 +1,31 @@
+.search_form_conainer .MuiFilledInput-root {
+  background-color: #fff !important;
+}
+.search_form_conainer .MuiFilledInput-root .MuiFilledInput-input {
+  padding: 10px 12px 10px;
+}
+
+.search_form_conainer .MuiInputAdornment-positionEnd {
+  z-index: 1;
+}
+.search_form_conainer .MuiOutlinedInput-input {
+  z-index: 1;
+}
+
+.search_form_conainer .PrivateNotchedOutline-root-1 {
+  z-index: 0;
+  background-color: #fff;
+}
+
+.search_form_conainer .MuiOutlinedInput-input {
+  padding: 10px 14px;
+}
+
+fieldset.MuiOutlinedInput-notchedOutline.PrivateNotchedOutline-root {
+  background-color: #fff !important;
+}
+
+.MuiPickersDatePickerRoot-toolbar,
+.MuiPickersDay-daySelected {
+  background-color: rgb(186, 72, 47);
+}
