@@ -33,6 +33,7 @@ const ListItem = (props) => {
               <div style={{ clear: "both" }}>
                 <div style={{ float: "left", width: "50%" }} className="px-2">
                   <img
+                    alt={props.title}
                     style={{ height: `${props.imgHeight}px` }}
                     className="w-100 "
                     src={props.imgPath}

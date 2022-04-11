@@ -4,24 +4,21 @@ const initialState = {
   data: [],
   params: {
     title: "",
-    publishDateFrom: "",
-    publishDateTo: "",
   },
   count: 1,
 };
-const news = (state = initialState, action) => {
+const photoAlbum = (state = initialState, action) => {
   switch (action.type) {
-    case types.FETCH_NEWS:
+    case types.FETCH_PHOTO_ALBUM:
       return {
         ...state,
         data: action.data,
         count: action.count,
         params: action.params,
       };
-
     default:
-      return news;
+      return photoAlbum;
   }
 };
 
-export default news;
+export default photoAlbum;

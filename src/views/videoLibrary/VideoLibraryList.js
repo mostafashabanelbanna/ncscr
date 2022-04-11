@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/ar";
 
-import { getNews } from "../../redux/actions/news";
+import { getVideoLibrary } from "../../redux/actions/videoLibrary";
 
-import { path } from "../../Path/media-path";
-
-import ListItem from "../ui/item-list-withImg";
 import PaginationSection from "../ui/pagination-section";
 import { GeneralLoading } from "../ui/LoadingScreens";
 import SearchSection from "../ui/search-section";
+import MediaList from "../ui/mediaList";
 
-const NewsList = () => {
-  const news = useSelector((state) => state.news.data);
-  const params = useSelector((state) => state.news.params);
-  const count = useSelector((state) => state.news.count);
+const VideoLibraryList = () => {
+  const videoLibrary = useSelector((state) => state.videoLibrary.data);
+  const params = useSelector((state) => state.videoLibrary.params);
+  const count = useSelector((state) => state.videoLibrary.count);
+
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
   const [title, setTitle] = useState();
   const [publishDateFrom, setPublishDateFrom] = useState();
   const [publishDateTo, setPublishDateTo] = useState();
+
   let pageCount;
   let searchData = {
     title,
@@ -32,7 +33,7 @@ const NewsList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setCurrentPage(0);
-    dispatch(getNews(currentPage + 1, searchData));
+    dispatch(getVideoLibrary(currentPage + 1, searchData));
   };
   const titleHandler = (e) => {
     setTitle(e.target.value);
@@ -56,18 +57,19 @@ const NewsList = () => {
   };
   useEffect(() => {
     //
-    dispatch(getNews(currentPage + 1, params));
+    dispatch(getVideoLibrary(currentPage + 1, params));
     //
   }, [currentPage, dispatch]);
 
-  const noNews = !news || (news && news.length === 0); //check if no data
+  const noVideoLibrary =
+    !videoLibrary || (videoLibrary && videoLibrary.length === 0); //check if no data
 
-  if (news) {
+  if (videoLibrary) {
     pageCount = Math.ceil(count / 9);
     return (
       <>
         <div className="col-12 my-3 px-3 container">
-          <h2> الأخبار</h2>
+          <h2>مكتبة الفيديو</h2>
           <div className="page_title"></div>
         </div>
         <SearchSection
@@ -83,25 +85,29 @@ const NewsList = () => {
           classNameDPTo="col-6"
         />
         <div className="container">
-          <div className=" d-flex flex-column flex-sm-row flex-wrap justify-content-start">
-            {!noNews &&
-              news.map((item) => {
+          <div className="row justify-content-start">
+            {!noVideoLibrary &&
+              videoLibrary.map((item) => {
                 return (
-                  <ListItem
-                    key={item.id}
-                    link={`/media-corner/news/${item.id}`}
-                    imgHeight={100}
-                    title={item.title_AR}
-                    // desc={item.description_AR}
-                    imgPath={`${path.news}${item.id}/Photo_AR/${item.photo_AR}`}
-                    date={moment(new Date(item.publishDate)).format("LL")}
-                  />
+                  <Link to={`/media-corner/video/${item.id}`}>
+                    <div
+                      style={{ cursor: "pointer" }}
+                      className="mb-4 col-lg-4 col-sm-6 col-12 p-3"
+                    >
+                      <MediaList
+                        key={item.id}
+                        imgHeight={250}
+                        title={item.title_AR}
+                        imgPath={`https://img.youtube.com/vi/${item.url}/hqdefault.jpg`}
+                      />
+                    </div>
+                  </Link>
                 );
               })}
-            {news.length && <div> لا توجد نتائج </div>}
+            {videoLibrary.length && <div> لا توجد نتائج </div>}
           </div>
         </div>
-        {!noNews && (
+        {!noVideoLibrary && (
           <div>
             <PaginationSection
               handlePageClick={handlePageClick}
@@ -121,4 +127,4 @@ const NewsList = () => {
   );
 };
 
-export default NewsList;
+export default VideoLibraryList;

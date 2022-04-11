@@ -1,7 +1,10 @@
 import { combineReducers } from "redux";
 import news from "./news";
-// import currentId from "./currentId";
-// import auth from "./auth";
+import photoAlbum from "./photoAlbum";
+import videoLibrary from "./videoLibrary";
+
 export default combineReducers({
-    news
+  news,
+  photoAlbum,
+  videoLibrary,
 });

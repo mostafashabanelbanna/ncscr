@@ -9,9 +9,9 @@ const initialState = {
   },
   count: 1,
 };
-const news = (state = initialState, action) => {
+const videoLibrary = (state = initialState, action) => {
   switch (action.type) {
-    case types.FETCH_NEWS:
+    case types.FETCH_VIDEO_LIBRARY:
       return {
         ...state,
         data: action.data,
@@ -20,8 +20,8 @@ const news = (state = initialState, action) => {
       };
 
     default:
-      return news;
+      return state;
   }
 };
 
-export default news;
+export default videoLibrary;

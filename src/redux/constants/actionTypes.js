@@ -1,2 +1,3 @@
 export const FETCH_NEWS = "FETCH_NEWS";
-export const CLEAR_NEWS = "CLEAR_NEWS";
+export const FETCH_PHOTO_ALBUM = "FETCH_PHOTO_ALBUM";
+export const FETCH_VIDEO_LIBRARY = "FETCH_VIDEO_LIBRARY";

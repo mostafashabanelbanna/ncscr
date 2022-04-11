@@ -304,14 +304,14 @@ const Menu = () => {
                       </NavDropdown.Item>
                       <div className="dropdown-item">
                         <Link
-                          to="/media-corner/photo"
+                          to="/media-corner/photo-album"
                           // as={"/media-corner/photo/index.html"}
                         >
                           <a onClick={closeNavbar}>معرض الصور</a>
                         </Link>
                       </div>
                       <NavDropdown.Item>
-                        <Link to="/media-corner/video">
+                        <Link to="/media-corner/video-library">
                           <a onClick={closeNavbar}>معرض الفيديو</a>
                         </Link>
                       </NavDropdown.Item>
