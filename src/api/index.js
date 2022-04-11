@@ -104,3 +104,25 @@ export const fetchDocumentLibraryItem = (id) =>
 
 // Static Content
 export const fetchStaticContent = (id) => API.get(`/StaticContentAPI/${id}`);
+
+// previous Managers
+export const fetchPreviousManagers = (pageNumber, keywords, pageSize) =>
+  API.post(
+    `/MemberAPI/SearchPreviousManager/${pageNumber}/${pageSize}`,
+    keywords
+  );
+
+export const previousManagersResultCount = (keywords) =>
+  API.post(`/MemberAPI/GetResultCountPreviousManager`, keywords);
+
+// Members
+export const fetchMembers = (pageNumber, keywords, pageSize) =>
+  API.post(`/MemberAPI/SearchMember/${pageNumber}/${pageSize}`, keywords);
+
+export const membersResultCount = (keywords) =>
+  API.post(`/MemberAPI/GetMemberResultCount`, keywords);
+
+// Org Chart
+
+export const fetchOrgChart = () =>
+  API.get("/DepartmentAPI/GetDepartmentsHierarcy");

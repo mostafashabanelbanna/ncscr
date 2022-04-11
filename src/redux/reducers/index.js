@@ -6,6 +6,8 @@ import videoLibrary from "./videoLibrary";
 import events from "./events";
 import courses from "./courses";
 import documentLibrary from "./documentLibrary";
+import previousManagers from "./previousManagers";
+import members from "./members";
 
 export default combineReducers({
   news,
@@ -15,4 +17,6 @@ export default combineReducers({
   loading,
   courses,
   documentLibrary,
+  previousManagers,
+  members,
 });

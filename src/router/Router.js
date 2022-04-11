@@ -13,6 +13,9 @@ import CourseDetails from "../views/courses/CourseDetails";
 import DocumentLibraryList from "../views/documentLibrary/DocumentLibraryList";
 import DocumentLibraryDetails from "../views/documentLibrary/DocumentLibraryDetails";
 import StaticContent from "../views/staticContetnt/StaticContent";
+import PreviousManagersList from "../views/previousManagers/PreviousManagersList";
+import MembersList from "../views/members/Members";
+import OrgChartRender from "../views/orgChart/orgChartRender";
 
 const Router = () => {
   return (
@@ -52,8 +55,10 @@ const Router = () => {
         path="/document-library/:docType/:observatory"
         element={<DocumentLibraryList />}
       />
-      {/* static-content */}
       <Route path="/static-content/:id" element={<StaticContent />} />
+      <Route path="/previous-managers" element={<PreviousManagersList />} />
+      <Route path="/members" element={<MembersList />} />
+      <Route path="/org-chart" element={<OrgChartRender />} />
     </Routes>
   );
 };
