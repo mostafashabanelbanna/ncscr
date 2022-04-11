@@ -4,7 +4,7 @@ const mainPath = "http://41.128.217.181:10088/Upload";
 export const path = {
   staticContent: `${mainPath}/StaticContent/`,
   news: `${mainPath}/News/`,
-  event: `${mainPath}/Event/`,
+  events: `${mainPath}/Event/`,
   documentLibrary: `${mainPath}/DocumentLibrary/`,
   media: `${mainPath}/Media/`,
   partiners: `${mainPath}/BusinessPartners/`,

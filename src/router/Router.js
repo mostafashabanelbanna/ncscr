@@ -6,6 +6,13 @@ import PhotoAlbumList from "../views/photoAlbum/PhotoAlbumList";
 import PhotoAlbumDetails from "../views/photoAlbum/PhotoAlbumDetails";
 import VideoLibraryList from "../views/videoLibrary/VideoLibraryList";
 import VideoLibraryDetails from "../views/videoLibrary/VideoLibraryDetails";
+import EventsList from "../views/events/EventsList";
+import EventDetails from "../views/events/EventDetails";
+import CoursesList from "../views/courses/CoursesList";
+import CourseDetails from "../views/courses/CourseDetails";
+import DocumentLibraryList from "../views/documentLibrary/DocumentLibraryList";
+import DocumentLibraryDetails from "../views/documentLibrary/DocumentLibraryDetails";
+import StaticContent from "../views/staticContetnt/StaticContent";
 
 const Router = () => {
   return (
@@ -26,6 +33,27 @@ const Router = () => {
         path="/media-corner/video-library"
         element={<VideoLibraryList />}
       />
+      <Route path="/media-corner/events/:id" element={<EventDetails />} />
+      <Route path="/media-corner/events" element={<EventsList />} />
+      <Route
+        path="/media-corner/course-training/:id"
+        element={<CourseDetails />}
+      />
+      <Route path="/media-corner/course-training" element={<CoursesList />} />
+      <Route
+        path="/document-details/:id"
+        element={<DocumentLibraryDetails />}
+      />
+      <Route
+        path="/document-library/:docType"
+        element={<DocumentLibraryList />}
+      />
+      <Route
+        path="/document-library/:docType/:observatory"
+        element={<DocumentLibraryList />}
+      />
+      {/* static-content */}
+      <Route path="/static-content/:id" element={<StaticContent />} />
     </Routes>
   );
 };

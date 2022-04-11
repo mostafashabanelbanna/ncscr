@@ -27,10 +27,7 @@ const NewsDetails = () => {
   useEffect(() => {
     getItem();
   }, []);
-  // useEffect(() => {
-  //   props.newsDetail(parseInt(props.params));
-  // }, []);
-  // console.log(props);
+
   if (newsItem.result) {
     return (
       <>

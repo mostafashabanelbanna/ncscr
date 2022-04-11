@@ -1,16 +1,16 @@
 import * as api from "../../api";
 import * as types from "../constants/actionTypes";
 
-export const getNews =
+export const getCourses =
   (pageNumber, keywords = {}, pageSize = 9) =>
   async (dispatch) => {
     dispatch({ type: types.IS_LOADING });
     try {
-      const { data } = await api.fetchNews(pageNumber, keywords, pageSize);
-      const countRes = await api.newsResultCount(keywords);
+      const { data } = await api.fetchCourses(pageNumber, keywords, pageSize);
+      const countRes = await api.coursesResultCount(keywords);
 
       dispatch({
-        type: types.FETCH_NEWS,
+        type: types.FETCH_COURSES,
         data: data.result,
         count: countRes.data.result,
         params: keywords,

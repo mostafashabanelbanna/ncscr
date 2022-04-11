@@ -6,15 +6,19 @@ import "moment/locale/ar";
 
 import { getVideoLibrary } from "../../redux/actions/videoLibrary";
 
+import { checkNulls, convertSearchData } from "../../utils/utils";
+
 import PaginationSection from "../ui/pagination-section";
 import { GeneralLoading } from "../ui/LoadingScreens";
 import SearchSection from "../ui/search-section";
 import MediaList from "../ui/mediaList";
 
 const VideoLibraryList = () => {
+  const [flag, setFlag] = useState(0);
   const videoLibrary = useSelector((state) => state.videoLibrary.data);
   const params = useSelector((state) => state.videoLibrary.params);
   const count = useSelector((state) => state.videoLibrary.count);
+  const loading = useSelector((state) => state.loading.loading);
 
   const dispatch = useDispatch();
 
@@ -33,7 +37,8 @@ const VideoLibraryList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setCurrentPage(0);
-    dispatch(getVideoLibrary(currentPage + 1, searchData));
+    dispatch(getVideoLibrary(currentPage + 1, convertSearchData(searchData)));
+    setFlag(1);
   };
   const titleHandler = (e) => {
     setTitle(e.target.value);
@@ -56,9 +61,11 @@ const VideoLibraryList = () => {
     setCurrentPage(selectedPage);
   };
   useEffect(() => {
-    //
-    dispatch(getVideoLibrary(currentPage + 1, params));
-    //
+    if (flag)
+      checkNulls(params) == false
+        ? dispatch(getVideoLibrary(currentPage + 1))
+        : dispatch(getVideoLibrary(currentPage + 1, convertSearchData(params)));
+    else dispatch(getVideoLibrary(currentPage + 1));
   }, [currentPage, dispatch]);
 
   const noVideoLibrary =
@@ -89,22 +96,21 @@ const VideoLibraryList = () => {
             {!noVideoLibrary &&
               videoLibrary.map((item) => {
                 return (
-                  <Link to={`/media-corner/video/${item.id}`}>
-                    <div
-                      style={{ cursor: "pointer" }}
-                      className="mb-4 col-lg-4 col-sm-6 col-12 p-3"
-                    >
+                  <div
+                    style={{ cursor: "pointer" }}
+                    className="mb-4 col-lg-4 col-sm-6 col-12 p-3"
+                  >
+                    <Link to={`/media-corner/video-library/${item.id}`}>
                       <MediaList
                         key={item.id}
                         imgHeight={250}
                         title={item.title_AR}
                         imgPath={`https://img.youtube.com/vi/${item.url}/hqdefault.jpg`}
                       />
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 );
               })}
-            {videoLibrary.length && <div> لا توجد نتائج </div>}
           </div>
         </div>
         {!noVideoLibrary && (
@@ -116,15 +122,13 @@ const VideoLibraryList = () => {
             />
           </div>
         )}
+        {loading && noVideoLibrary ? <GeneralLoading /> : null}
+        {!loading && noVideoLibrary ? (
+          <h2 className="w-100 text-center p-4"> لا توجد نتائج</h2>
+        ) : null}
       </>
     );
   }
-  return (
-    <>
-      {" "}
-      <GeneralLoading />{" "}
-    </>
-  );
 };
 
 export default VideoLibraryList;

@@ -44,7 +44,7 @@ export const fetchHomePartner = () =>
 export const addComment = (data) => API.post("/CommentAPI/AddComment", data);
 
 // Medai corner
-// News List
+// News
 export const fetchNews = (pageNumber, keywords, pageSize) =>
   API.post(`/NewsAPI/Search/${pageNumber}/${pageSize}`, keywords);
 
@@ -53,7 +53,7 @@ export const newsResultCount = (keywords) =>
 
 export const fetchNewsItem = (id) => API.get(`/NewsAPI/GetById?id=${id}`);
 
-// Photo Album List
+// Photo Album
 export const fetchPhotoAlbum = (pageNumber, keywords, pageSize) =>
   API.post(`/MediaAPI/SearchPhoto/${pageNumber}/${pageSize}`, keywords);
 
@@ -63,7 +63,7 @@ export const photoAlbumResultCount = (keywords) =>
 export const fetchPhotoAlbumItem = (id) =>
   API.get(`/MediaAPI/GetByIdPhoto?id=${id}`);
 
-// Video Libreary List
+// Video Libreary
 export const fetchVideoLibrary = (pageNumber, keywords, pageSize) =>
   API.post(`/MediaAPI/SearchVedio/${pageNumber}/${pageSize}`, keywords);
 
@@ -72,3 +72,35 @@ export const videoLibraryResultCount = (keywords) =>
 
 export const fetchVideoLibraryItem = (id) =>
   API.get(`/MediaAPI/GetByIdVedio?id=${id}`);
+
+// Events
+export const fetchEvents = (pageNumber, keywords, pageSize) =>
+  API.post(`/EventAPI/Search/${pageNumber}/${pageSize}`, keywords);
+
+export const eventsResultCount = (keywords) =>
+  API.post(`/EventAPI/GetResultCount`, keywords);
+
+export const fetchEventItem = (id) => API.get(`/EventAPI/GetById?id=${id}`);
+
+// Cousrses
+export const fetchCourses = (pageNumber, keywords, pageSize) =>
+  API.post(`/TrainingCourseAPI/Search/${pageNumber}/${pageSize}`, keywords);
+
+export const coursesResultCount = (keywords) =>
+  API.post(`/TrainingCourseAPI/GetResultCount`, keywords);
+
+export const fetchCourseItem = (id) =>
+  API.get(`/TrainingCourseAPI/GetById?id=${id}`);
+
+// Document Library
+export const fetchDocumentLibrary = (pageNumber, keywords, pageSize) =>
+  API.post(`/DocumentLibraryAPI/Search/${pageNumber}/${pageSize}`, keywords);
+
+export const documentLibraryResultCount = (keywords) =>
+  API.post(`/DocumentLibraryAPI/GetResultCount`, keywords);
+
+export const fetchDocumentLibraryItem = (id) =>
+  API.get(`/DocumentLibraryAPI/GetById?id=${id}`);
+
+// Static Content
+export const fetchStaticContent = (id) => API.get(`/StaticContentAPI/${id}`);

@@ -316,7 +316,7 @@ const Menu = () => {
                         </Link>
                       </NavDropdown.Item>
                       <NavDropdown.Item>
-                        <Link to="/media-corner/event">
+                        <Link to="/media-corner/events">
                           <a onClick={closeNavbar}>فعاليات المركز</a>
                         </Link>
                       </NavDropdown.Item>

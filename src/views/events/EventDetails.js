@@ -31,22 +31,25 @@ const EventDetails = () => {
     return (
       <>
         <NewsDetailsItem
-          key={props.course.result.id}
-          title={props.course.result.courseName}
-          place={props.course.result.place ?? null}
-          price={props.course.result.price ?? null}
-          date={moment(new Date(props.course.result.publishDate)).format("LL")}
-          content={props.course.result.trainingSubject}
-          imgPath={
-            props.course.result.photo_AR
-              ? path.courses +
-                props.course.result.id +
-                "/Photo_AR/" +
-                props.course.result.photo_AR
-              : null
+          key={eventsItem.result.id}
+          title={eventsItem.result.title_AR}
+          type={eventsItem.result.eventCategoryName}
+          date={
+            moment(new Date(eventsItem.result.endDate)).format("LL") +
+            " الى " +
+            moment(new Date(eventsItem.result.startDate)).format("LL")
           }
-          album={props.course.result.attachments}
-          mediaID={props.course.result.mediaID}
+          content={eventsItem.result.description_AR}
+          imgPath={
+            path.events +
+            eventsItem.result.id +
+            "/Photo_AR/" +
+            eventsItem.result.photo_AR
+          }
+          album={eventsItem.result.attachments}
+          mediaID={eventsItem.result.mediaID}
+          pdf={eventsItem.result.fileName_AR}
+          pdfSrc={path.event + eventsItem.result.id + "/fileName_AR/"}
         />
       </>
     );

@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import "moment/locale/ar";
 
-import { getNews } from "../../redux/actions/news";
-
 import { checkNulls, convertSearchData } from "../../utils/utils";
+
+import { getEvents } from "../../redux/actions/events";
 
 import { path } from "../../Path/media-path";
 
@@ -14,16 +14,16 @@ import PaginationSection from "../ui/pagination-section";
 import { GeneralLoading } from "../ui/LoadingScreens";
 import SearchSection from "../ui/search-section";
 
-const NewsList = () => {
+const EventsList = () => {
   const [flag, setFlag] = useState(0);
-  const news = useSelector((state) => state.news.data);
-  const params = useSelector((state) => state.news.params);
-  const count = useSelector((state) => state.news.count);
+  const events = useSelector((state) => state.events.data);
+  const params = useSelector((state) => state.events.params);
+  const count = useSelector((state) => state.events.count);
   const loading = useSelector((state) => state.loading.loading);
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState();
   const [publishDateFrom, setPublishDateFrom] = useState();
   const [publishDateTo, setPublishDateTo] = useState();
   let pageCount;
@@ -36,7 +36,7 @@ const NewsList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setCurrentPage(0);
-    dispatch(getNews(currentPage + 1, convertSearchData(searchData)));
+    dispatch(getEvents(currentPage + 1, convertSearchData(searchData)));
     setFlag(1);
   };
   const titleHandler = (e) => {
@@ -62,19 +62,19 @@ const NewsList = () => {
   useEffect(() => {
     if (flag)
       checkNulls(params) == false
-        ? dispatch(getNews(currentPage + 1))
-        : dispatch(getNews(currentPage + 1, convertSearchData(params)));
-    else dispatch(getNews(currentPage + 1));
+        ? dispatch(getEvents(currentPage + 1))
+        : dispatch(getEvents(currentPage + 1, convertSearchData(params)));
+    else dispatch(getEvents(currentPage + 1));
   }, [currentPage, dispatch]);
 
-  const noNews = !news || (news && news.length === 0); //check if no data
+  const noEvents = !events || (events && events.length === 0); //check if no data
 
-  if (news) {
+  if (events) {
     pageCount = Math.ceil(count / 9);
     return (
       <>
         <div className="col-12 my-3 px-3 container">
-          <h2> الأخبار</h2>
+          <h2> الفعاليات</h2>
           <div className="page_title"></div>
         </div>
         <SearchSection
@@ -91,23 +91,23 @@ const NewsList = () => {
         />
         <div className="container">
           <div className=" d-flex flex-column flex-sm-row flex-wrap justify-content-start">
-            {!noNews &&
-              news.map((item) => {
+            {!noEvents &&
+              events.map((item) => {
                 return (
                   <ListItem
                     key={item.id}
-                    link={`/media-corner/news/${item.id}`}
+                    link={`/media-corner/events/${item.id}`}
                     imgHeight={100}
                     title={item.title_AR}
                     // desc={item.description_AR}
-                    imgPath={`${path.news}${item.id}/Photo_AR/${item.photo_AR}`}
-                    date={moment(new Date(item.publishDate)).format("LL")}
+                    imgPath={`${path.events}${item.id}/Photo_AR/${item.photo_AR}`}
+                    date={moment(new Date(item.startDate)).format("LL")}
                   />
                 );
               })}
           </div>
         </div>
-        {!noNews && (
+        {!noEvents && (
           <div>
             <PaginationSection
               handlePageClick={handlePageClick}
@@ -116,8 +116,8 @@ const NewsList = () => {
             />
           </div>
         )}
-        {loading && noNews ? <GeneralLoading /> : null}
-        {!loading && noNews ? (
+        {loading && noEvents ? <GeneralLoading /> : null}
+        {!loading && noEvents ? (
           <h2 className="w-100 text-center p-4"> لا توجد نتائج</h2>
         ) : null}
       </>
@@ -125,4 +125,4 @@ const NewsList = () => {
   }
 };
 
-export default NewsList;
+export default EventsList;

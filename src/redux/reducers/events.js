@@ -9,9 +9,9 @@ const initialState = {
   },
   count: 1,
 };
-const news = (state = initialState, action) => {
+const events = (state = initialState, action) => {
   switch (action.type) {
-    case types.FETCH_NEWS:
+    case types.FETCH_EVENTS:
       return {
         ...state,
         data: action.data,
@@ -24,4 +24,4 @@ const news = (state = initialState, action) => {
   }
 };
 
-export default news;
+export default events;

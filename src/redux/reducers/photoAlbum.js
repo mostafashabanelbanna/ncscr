@@ -17,7 +17,7 @@ const photoAlbum = (state = initialState, action) => {
         params: action.params,
       };
     default:
-      return photoAlbum;
+      return state;
   }
 };
 

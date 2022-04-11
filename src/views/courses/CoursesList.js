@@ -3,22 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import "moment/locale/ar";
 
-import { getNews } from "../../redux/actions/news";
+import { getCourses } from "../../redux/actions/courses";
 
 import { checkNulls, convertSearchData } from "../../utils/utils";
 
-import { path } from "../../Path/media-path";
-
-import ListItem from "../ui/item-list-withImg";
+import CourseCard from "./courseCard";
 import PaginationSection from "../ui/pagination-section";
 import { GeneralLoading } from "../ui/LoadingScreens";
 import SearchSection from "../ui/search-section";
 
-const NewsList = () => {
+const CoursesList = () => {
   const [flag, setFlag] = useState(0);
-  const news = useSelector((state) => state.news.data);
-  const params = useSelector((state) => state.news.params);
-  const count = useSelector((state) => state.news.count);
+  const courses = useSelector((state) => state.courses.data);
+  const params = useSelector((state) => state.courses.params);
+  const count = useSelector((state) => state.courses.count);
   const loading = useSelector((state) => state.loading.loading);
   const dispatch = useDispatch();
 
@@ -36,7 +34,7 @@ const NewsList = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     setCurrentPage(0);
-    dispatch(getNews(currentPage + 1, convertSearchData(searchData)));
+    dispatch(getCourses(currentPage + 1, convertSearchData(searchData)));
     setFlag(1);
   };
   const titleHandler = (e) => {
@@ -62,19 +60,19 @@ const NewsList = () => {
   useEffect(() => {
     if (flag)
       checkNulls(params) == false
-        ? dispatch(getNews(currentPage + 1))
-        : dispatch(getNews(currentPage + 1, convertSearchData(params)));
-    else dispatch(getNews(currentPage + 1));
+        ? dispatch(getCourses(currentPage + 1))
+        : dispatch(getCourses(currentPage + 1, convertSearchData(params)));
+    else dispatch(getCourses(currentPage + 1));
   }, [currentPage, dispatch]);
 
-  const noNews = !news || (news && news.length === 0); //check if no data
+  const noCourse = !courses || (courses && courses.length === 0); //check if no data
 
-  if (news) {
+  if (courses) {
     pageCount = Math.ceil(count / 9);
     return (
       <>
         <div className="col-12 my-3 px-3 container">
-          <h2> الأخبار</h2>
+          <h2> الدورات التدريبية</h2>
           <div className="page_title"></div>
         </div>
         <SearchSection
@@ -89,25 +87,15 @@ const NewsList = () => {
           publishToHandler={publishToHandler}
           classNameDPTo="col-6"
         />
-        <div className="container">
-          <div className=" d-flex flex-column flex-sm-row flex-wrap justify-content-start">
-            {!noNews &&
-              news.map((item) => {
-                return (
-                  <ListItem
-                    key={item.id}
-                    link={`/media-corner/news/${item.id}`}
-                    imgHeight={100}
-                    title={item.title_AR}
-                    // desc={item.description_AR}
-                    imgPath={`${path.news}${item.id}/Photo_AR/${item.photo_AR}`}
-                    date={moment(new Date(item.publishDate)).format("LL")}
-                  />
-                );
+        <div className="col-12 container">
+          <div className="text-white d-flex flex-column flex-sm-row flex-wrap justify-content-center">
+            {!noCourse &&
+              courses.map((item) => {
+                return <CourseCard item={item} />;
               })}
           </div>
         </div>
-        {!noNews && (
+        {!noCourse && (
           <div>
             <PaginationSection
               handlePageClick={handlePageClick}
@@ -116,8 +104,8 @@ const NewsList = () => {
             />
           </div>
         )}
-        {loading && noNews ? <GeneralLoading /> : null}
-        {!loading && noNews ? (
+        {loading && noCourse ? <GeneralLoading /> : null}
+        {!loading && noCourse ? (
           <h2 className="w-100 text-center p-4"> لا توجد نتائج</h2>
         ) : null}
       </>
@@ -125,4 +113,4 @@ const NewsList = () => {
   }
 };
 
-export default NewsList;
+export default CoursesList;
