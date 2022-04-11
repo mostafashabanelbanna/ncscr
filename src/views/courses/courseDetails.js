@@ -6,20 +6,20 @@ import "moment/locale/ar";
 
 import { GeneralLoading } from "../ui/LoadingScreens";
 import NewsDetailsItem from "../ui/newsDetailsItem";
-import { fetchEventItem } from "../../api";
+import { fetchCourseItem } from "../../api";
 import { useParams } from "react-router-dom";
 
-const EventDetails = () => {
-  const [eventsItem, setEventsItem] = useState({});
+const CourseDetails = () => {
+  const [courseItem, setCourseItem] = useState({});
   let { id } = useParams();
   const getItem = async () => {
     //fetch  data
-    const response = await fetchEventItem(id).catch((err) =>
+    const response = await fetchCourseItem(id).catch((err) =>
       console.log("Error", err)
     ); //handle errors
     console.log(response);
     if (response && response.data) {
-      setEventsItem(response.data);
+      setCourseItem(response.data);
     }
   };
 
@@ -27,26 +27,26 @@ const EventDetails = () => {
     getItem();
   }, []);
 
-  if (eventsItem.result) {
+  if (courseItem.result) {
     return (
       <>
         <NewsDetailsItem
-          key={props.course.result.id}
-          title={props.course.result.courseName}
-          place={props.course.result.place ?? null}
-          price={props.course.result.price ?? null}
-          date={moment(new Date(props.course.result.publishDate)).format("LL")}
-          content={props.course.result.trainingSubject}
+          key={courseItem.result.id}
+          title={courseItem.result.courseName}
+          place={courseItem.result.place ?? null}
+          price={courseItem.result.price ?? null}
+          date={moment(new Date(courseItem.result.publishDate)).format("LL")}
+          content={courseItem.result.trainingSubject}
           imgPath={
-            props.course.result.photo_AR
+            courseItem.result.photo_AR
               ? path.courses +
-                props.course.result.id +
+                courseItem.result.id +
                 "/Photo_AR/" +
-                props.course.result.photo_AR
+                courseItem.result.photo_AR
               : null
           }
-          album={props.course.result.attachments}
-          mediaID={props.course.result.mediaID}
+          album={courseItem.result.attachments}
+          mediaID={courseItem.result.mediaID}
         />
       </>
     );
@@ -60,4 +60,4 @@ const EventDetails = () => {
   );
 };
 
-export default EventDetails;
+export default CourseDetails;
