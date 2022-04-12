@@ -8,7 +8,7 @@ import courses from "./courses";
 import documentLibrary from "./documentLibrary";
 import previousManagers from "./previousManagers";
 import members from "./members";
-
+import searchResult from "./searchResult";
 export default combineReducers({
   news,
   photoAlbum,
@@ -19,4 +19,5 @@ export default combineReducers({
   documentLibrary,
   previousManagers,
   members,
+  searchResult,
 });

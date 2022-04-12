@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
-  const location = useLocation();
+  const navigate = useNavigate();
   const [value, setValue] = useState("");
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (value)
-          location.push(`/searchResult/${value}`, null, { shallow: true });
+        if (value) navigate(`/searchResult/${value}`);
       }}
     >
       <div className="form-group position-relative py-0">

@@ -16,6 +16,7 @@ const ListItem = (props) => {
         style={{ cursor: "pointer" }}
       >
         <Link
+          // to=
           to={props.link}
           className=" text-dark text-decoration-none"
           style={{ zIndex: 1000, cursor: "pointer" }}

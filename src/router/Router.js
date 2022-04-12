@@ -16,6 +16,7 @@ import StaticContent from "../views/staticContetnt/StaticContent";
 import PreviousManagersList from "../views/previousManagers/PreviousManagersList";
 import MembersList from "../views/members/Members";
 import OrgChartRender from "../views/orgChart/orgChartRender";
+import SearchResult from "../views/searchResult/SearchResult";
 
 const Router = () => {
   return (
@@ -59,6 +60,7 @@ const Router = () => {
       <Route path="/previous-managers" element={<PreviousManagersList />} />
       <Route path="/members" element={<MembersList />} />
       <Route path="/org-chart" element={<OrgChartRender />} />
+      <Route path="/searchResult/:keyword" element={<SearchResult />} />
     </Routes>
   );
 };

@@ -126,3 +126,9 @@ export const membersResultCount = (keywords) =>
 
 export const fetchOrgChart = () =>
   API.get("/DepartmentAPI/GetDepartmentsHierarcy");
+
+// SearchResults
+export const fetchSearchResult = (pageNumber, keywords, pageSize) =>
+  API.post(
+    `/GeneralAPI/Search/${pageNumber}/${pageSize}?searchText=${keywords}`
+  );
